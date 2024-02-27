@@ -5,8 +5,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 
 import * as LoginActions from "../../Redux/Slices/Login_Slices";
-import LogoutButton from "./LogoutButton";
 import LoginButton from "./LoginButton";
+import MenuBar from "../Main/Nav/Menu/MenuBar";
 // import MapsGameStore from "../Google/MapsGameStore";
 
 export default function LoginMain() {
@@ -37,14 +37,12 @@ export default function LoginMain() {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-row justify-between px-4 py-2">
-      <p className="text-2xl font-bold">LOGO</p>
+    <div>
       {auth.currentUser != null ? (
         <div>
           {/* <p>{userData.displayName}</p> */}
-          <img className="rounded-full w-[4rem] h-[4rem]" src={userData.photoURL} alt="" />
+          <MenuBar />
           {/* <MapsGameStore /> */}
-          <LogoutButton />
         </div>
       ) : (
         <div>

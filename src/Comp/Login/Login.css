@@ -1,0 +1,8 @@
+.closedLogin {
+  display: none;
+}
+
+.openLogin {
+  position: relative;
+  display: block;
+}

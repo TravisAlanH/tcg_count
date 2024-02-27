@@ -1,0 +1,8 @@
+.dropNotOpen {
+  display: none;
+}
+
+.dropOpen {
+  position: relative;
+  display: block;
+}

@@ -5,7 +5,7 @@ import Body from "./Body/Body";
 
 export default function Main() {
   return (
-    <div>
+    <div className="w-screen">
       <NavBar />
       <Body />
       <Footer />
