@@ -33,6 +33,7 @@ export default function MenuBar() {
           className="rounded-full w-[3rem] h-[3rem]"
           src={userData.payload.photoURL !== "" ? userData.payload.photoURL : ""}
           referrerPolicy="no-referrer"
+          alt=""
         />
       </div>
       <div
@@ -40,9 +41,9 @@ export default function MenuBar() {
         className={"dropdown-menu border-2 border-red-800 px-4 py-2 " + (dropOpen ? "dropOpen" : "dropNotOpen")}>
         <p className="pb-5">Header</p>
         <ul className="flex flex-col gap-3">
-          <DropDownItem img="" text="My Profile" />
-          <DropDownItem img="" text="Settings" />
-          <DropDownItem img="" text="Logout" />
+          <DropDownItem img="" text="My Profile" alt="" />
+          <DropDownItem img="" text="Settings" alt="" />
+          <DropDownItem img="" text="Logout" alt="" />
           <LogoutButton />
         </ul>
       </div>
@@ -53,8 +54,8 @@ export default function MenuBar() {
 function DropDownItem(props) {
   return (
     <li className="dropDownItem">
-      <img src={props.img} />
-      <a>{props.text}</a>
+      <img src={props.img} alt="" />
+      <p>{props.text}</p>
     </li>
   );
 }

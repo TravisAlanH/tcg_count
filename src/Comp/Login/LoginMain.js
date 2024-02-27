@@ -13,7 +13,7 @@ export default function LoginMain() {
   const [userData, setUserData] = React.useState({});
   const dispatch = useDispatch();
   // const user = useSelector((state) => state.data.Login_Slices.user);
-
+  console.log(userData);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
