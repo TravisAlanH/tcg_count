@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { auth } from "../../Firebase";
 import { onAuthStateChanged } from "firebase/auth";
 // import { useSelector, useDispatch } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import * as LoginActions from "../../Redux/Slices/Login_Slices";
 import LoginButton from "./LoginButton";
@@ -10,6 +10,7 @@ import MenuBar from "../Main/Nav/Menu/MenuBar";
 // import MapsGameStore from "../Google/MapsGameStore";
 
 export default function LoginMain() {
+  const userData = useSelector((state) => state.data.Login_Slices.user);
   const dispatch = useDispatch();
   // const user = useSelector((state) => state.data.Login_Slices.user);
   useEffect(() => {
@@ -34,9 +35,11 @@ export default function LoginMain() {
 
   console.log("auth.currentUser", auth.currentUser);
   console.log("auth", auth.currentUser);
+  console.log(userData);
+
   return (
     <div>
-      {auth.currentUser != null ? (
+      {Object.keys(userData).length != 0 ? (
         // THIS NEEDS TO LOOK AT THE REDUX FOR LOGIN
         <div>
           {/* <p>{userData.displayName}</p> */}

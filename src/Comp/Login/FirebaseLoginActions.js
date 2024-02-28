@@ -11,8 +11,10 @@ export const handleCreateAccount = async (user) => {
     console.log(auth.currentUser);
 
     console.log("Account created successfully!");
+    return { status: true, message: auth.currentUser };
   } catch (error) {
     console.error("Error creating account:", error.message);
+    return { status: false, message: error.message };
   }
 };
 

@@ -100,13 +100,15 @@ const CreateAccountSet = () => {
   });
 
   const handleCreateAccountWithPasswordChecking = (e) => {
+    let createStatus;
     e.preventDefault();
     if (createAccountData.password !== createAccountData.confirmPassword) {
       setCreateAccountData({ ...createAccountData, password: "", confirmPassword: "" });
       console.log("Passwords do not match");
     } else {
-      LoginActions.handleCreateAccount(createAccountData);
+      createStatus = LoginActions.handleCreateAccount(createAccountData);
     }
+    console.log("Create Status", createStatus);
   };
 
   return (
