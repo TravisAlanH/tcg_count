@@ -1,8 +1,10 @@
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../Firebase";
+import { useDispatch } from "react-redux";
 import React from "react";
 import "./Login.css";
 import * as LoginActions from "./FirebaseLoginActions";
+import * as Login_Slices from "../../Redux/Slices/Login_Slices";
 
 export default function LoginButton() {
   const [openLogin, setOpenLogin] = React.useState(false);
@@ -91,6 +93,7 @@ const LoginSet = () => {
 };
 
 const CreateAccountSet = () => {
+  const dispatch = useDispatch();
   const [createAccountData, setCreateAccountData] = React.useState({
     firstName: "",
     lastName: "",
@@ -99,16 +102,33 @@ const CreateAccountSet = () => {
     confirmPassword: "",
   });
 
-  const handleCreateAccountWithPasswordChecking = (e) => {
-    let createStatus;
+  // Function to handle account creation with password checking
+  const handleCreateAccountWithPasswordChecking = async (e) => {
+    // Prevent the default form submission behavior
     e.preventDefault();
-    if (createAccountData.password !== createAccountData.confirmPassword) {
-      setCreateAccountData({ ...createAccountData, password: "", confirmPassword: "" });
-      console.log("Passwords do not match");
-    } else {
-      createStatus = LoginActions.handleCreateAccount(createAccountData);
+
+    try {
+      if (createAccountData.password !== createAccountData.confirmPassword) {
+        setCreateAccountData({ ...createAccountData, password: "", confirmPassword: "" });
+        console.log("Passwords do not match");
+      } else {
+        const createStatus = await LoginActions.handleCreateAccount(createAccountData);
+
+        if (createStatus.status === true) {
+          const userDataResults = {
+            displayName: createAccountData.firstName + " " + createAccountData.lastName,
+            email: createAccountData.email,
+            photoURL: "Default",
+            uid: createStatus.message.uid,
+            emailVerified: false,
+          };
+          dispatch(Login_Slices.UserData(userDataResults));
+          localStorage.setItem("user", JSON.stringify(userDataResults));
+        }
+      }
+    } catch (error) {
+      console.error("Error during account creation:", error);
     }
-    console.log("Create Status", createStatus);
   };
 
   return (
