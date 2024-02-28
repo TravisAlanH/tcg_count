@@ -10,10 +10,8 @@ import MenuBar from "../Main/Nav/Menu/MenuBar";
 // import MapsGameStore from "../Google/MapsGameStore";
 
 export default function LoginMain() {
-  const [userData, setUserData] = React.useState({});
   const dispatch = useDispatch();
   // const user = useSelector((state) => state.data.Login_Slices.user);
-  console.log(userData);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -24,11 +22,9 @@ export default function LoginMain() {
           uid: user.uid,
           emailVerified: user.emailVerified,
         };
-        setUserData(userDataResults);
         dispatch(LoginActions.UserData(userDataResults));
         localStorage.setItem("user", JSON.stringify(userDataResults));
       } else {
-        setUserData({});
         dispatch(LoginActions.LogoutUser());
         localStorage.removeItem("user");
       }
@@ -36,9 +32,12 @@ export default function LoginMain() {
     return () => unsubscribe();
   }, [dispatch]);
 
+  console.log("auth.currentUser", auth.currentUser);
+  console.log("auth", auth.currentUser);
   return (
     <div>
       {auth.currentUser != null ? (
+        // THIS NEEDS TO LOOK AT THE REDUX FOR LOGIN
         <div>
           {/* <p>{userData.displayName}</p> */}
           <MenuBar />

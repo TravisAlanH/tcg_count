@@ -31,7 +31,7 @@ export default function MenuBar() {
         }}>
         <img
           className="rounded-full w-[3rem] h-[3rem]"
-          src={userData.payload.photoURL !== "" ? userData.payload.photoURL : ""}
+          src={userData.payload.photoURL || "https://via.placeholder.com/150"}
           referrerPolicy="no-referrer"
           alt=""
         />
