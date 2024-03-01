@@ -39,7 +39,7 @@ export default function LoginMain() {
 
   return (
     <div>
-      {Object.keys(userData).length != 0 ? (
+      {Object.keys(userData).length !== 0 ? (
         // THIS NEEDS TO LOOK AT THE REDUX FOR LOGIN
         <div>
           {/* <p>{userData.displayName}</p> */}
