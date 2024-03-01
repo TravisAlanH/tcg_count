@@ -10,12 +10,6 @@ export default function MTGCommanderGameCode() {
   console.log(uid.randomUUID(6));
 
   const handleCardSearch = () => {
-    let cardListData = {
-      name: "",
-      imageURL: "",
-      manaCost: "",
-    };
-    let cardListHolder = [];
     let searchItem = searchedCard.split(" ").join("+");
     Axios.get(
       "https://api.scryfall.com/cards/search?q=" +
