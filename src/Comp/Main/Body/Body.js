@@ -1,15 +1,17 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "../../Pages/Home/HomeLayout";
+import AccountLayout from "../../Pages/Account/AccountLayout";
+import SettingsLayout from "../../Pages/Settings/SettingsLayout";
+import LifeLayout from "../../Pages/Games/MTG/Commander/LifeTotals/LifeLayout";
 
 export default function Body() {
   return (
-    <div className="h-screen">
-      <button
-        className="border-2 w-[20rem] h-[5rem]"
-        onClick={() => {
-          console.log("test");
-        }}>
-        test
-      </button>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} exact />
+      <Route path="/account" element={<AccountLayout />} />
+      <Route path="/settings" element={<SettingsLayout />} />
+      <Route path="mtgLifeCounter" element={<LifeLayout />} />
+    </Routes>
   );
 }

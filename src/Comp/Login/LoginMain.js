@@ -33,10 +33,6 @@ export default function LoginMain() {
     return () => unsubscribe();
   }, [dispatch]);
 
-  console.log("auth.currentUser", auth.currentUser);
-  console.log("auth", auth.currentUser);
-  console.log(userData);
-
   return (
     <div>
       {Object.keys(userData).length !== 0 ? (

@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import "./MenuBar.css";
 import LogoutButton from "../../../Login/LogoutButton";
+import defaultUserImage from "../../../../Images/UserProfileImages/default_image.jpeg";
+import { Link } from "react-router-dom";
 
 export default function MenuBar() {
   const [dropOpen, setDropOpen] = React.useState(false);
@@ -31,7 +33,7 @@ export default function MenuBar() {
         }}>
         <img
           className="rounded-full w-[3rem] h-[3rem]"
-          src={userData.payload.photoURL || "https://via.placeholder.com/150"}
+          src={userData.payload.photoURL || defaultUserImage}
           referrerPolicy="no-referrer"
           alt=""
         />
@@ -41,21 +43,27 @@ export default function MenuBar() {
         className={"dropdown-menu border-2 border-red-800 px-4 py-2 " + (dropOpen ? "dropOpen" : "dropNotOpen")}>
         <p className="pb-5">Header</p>
         <ul className="flex flex-col gap-3">
-          <DropDownItem img="" text="My Profile" alt="" />
-          <DropDownItem img="" text="Settings" alt="" />
-          <DropDownItem img="" text="Logout" alt="" />
+          {/*  */}
+          <li className="dropDownItem">
+            <img src={""} alt="" />
+            <Link to="/">Home</Link>
+          </li>
+          {/*  */}
+          {/*  */}
+          <li className="dropDownItem">
+            <img src={""} alt="" />
+            <Link to="/account">My Profile</Link>
+          </li>
+          {/*  */}
+          {/*  */}
+          <li className="dropDownItem">
+            <img src={""} alt="" />
+            <Link to="/settings">Settings</Link>
+          </li>
+          {/*  */}
           <LogoutButton />
         </ul>
       </div>
     </div>
-  );
-}
-
-function DropDownItem(props) {
-  return (
-    <li className="dropDownItem">
-      <img src={props.img} alt="" />
-      <p>{props.text}</p>
-    </li>
   );
 }
