@@ -4,6 +4,7 @@ import Home from "../../Pages/Home/HomeLayout";
 import AccountLayout from "../../Pages/Account/AccountLayout";
 import SettingsLayout from "../../Pages/Settings/SettingsLayout";
 import LifeLayout from "../../Pages/Games/MTG/Commander/LifeTotals/LifeLayout";
+import GamesHomeLayout from "../../Pages/Games/GamesHome/GamesHomeLayout";
 
 export default function Body() {
   return (
@@ -11,7 +12,8 @@ export default function Body() {
       <Route path="/" element={<Home />} exact />
       <Route path="/account" element={<AccountLayout />} />
       <Route path="/settings" element={<SettingsLayout />} />
-      <Route path="mtgLifeCounter" element={<LifeLayout />} />
+      <Route path="/games" element={<GamesHomeLayout />} />
+      <Route path="/mtgLifeCounter" element={<LifeLayout />} />
     </Routes>
   );
 }
