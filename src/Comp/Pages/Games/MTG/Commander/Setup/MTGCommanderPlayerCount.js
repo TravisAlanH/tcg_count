@@ -3,6 +3,7 @@ import MenuBar from "../../../Utilities/LifeMenuBar/MenuBar";
 import { useDispatch } from "react-redux";
 import * as GameStateActions from "../../../../../../Redux/Slices/GameState_Slices";
 import * as MTGCommanderActions from "../../../../../../Redux/Slices/MTGSlices/MTGCommander_Slices";
+import { Link } from "react-router-dom";
 
 export default function LifeLayout() {
   const [playerCount, setPlayerCount] = React.useState(0);
@@ -37,6 +38,7 @@ export default function LifeLayout() {
           className="border-2">
           set players
         </button>
+        <Link to="/mtgCommanderGameTable">Continue</Link>
       </div>
     </div>
   );

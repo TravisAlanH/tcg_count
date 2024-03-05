@@ -6,6 +6,7 @@ import SettingsLayout from "../../Pages/Settings/SettingsLayout";
 import LifeLayout from "../../Pages/Games/MTG/Commander/Setup/MTGCommanderPlayerCount";
 import GamesHomeLayout from "../../Pages/Games/GamesHome/GamesHomeLayout";
 import MTGCommanderHostJoin from "../../Pages/Games/MTG/Commander/MTGCommanderGameCode/MTGCommanderHostJoin";
+import MTGCommanderGameTable from "../../Pages/Games/MTG/Commander/Setup/MTGCommanderGameTable";
 
 export default function Body() {
   return (
@@ -17,6 +18,7 @@ export default function Body() {
 
       <Route path="/mtgCommanderSetup" element={<MTGCommanderHostJoin />} />
       <Route path="/mtgLifeCounterCommander" element={<LifeLayout />} />
+      <Route path="/mtgCommanderGameTable" element={<MTGCommanderGameTable />} />
     </Routes>
   );
 }

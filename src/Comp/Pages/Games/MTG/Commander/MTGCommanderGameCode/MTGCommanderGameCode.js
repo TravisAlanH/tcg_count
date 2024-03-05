@@ -1,6 +1,8 @@
 import React from "react";
 import ShortUniqueId from "short-unique-id";
 import Axios from "axios";
+import { auth } from "../../../../../../Firebase";
+import { handleCreateDBGameCode } from "../../../../../../FireActions/GameCodeActions";
 
 export default function MTGCommanderGameCode() {
   const [searchedCard, setSearchedCard] = React.useState("");
@@ -38,8 +40,6 @@ export default function MTGCommanderGameCode() {
   const handleCardSelection = (index) => {
     setSelectedCard(cardList[index]);
   };
-  console.log(selectedCard);
-
   return (
     <div>
       <div className="flex flex-col border-2">
@@ -63,8 +63,22 @@ export default function MTGCommanderGameCode() {
         {selectedCard && <img src={selectedCard.imageURL} alt={selectedCard.name} style={{ maxWidth: "100%" }} />}
         {selectedCard !== null ? (
           <div>
-            <h3>Game Code:</h3>
-            <p>{code()}</p>
+            <h3>Join Code:</h3>
+            <p id="JoinCode">{code()}</p>
+            <button
+              onClick={() => {
+                let codeSend = document.getElementById("JoinCode").innerHTML;
+                let joinPayload = {
+                  joinCode: codeSend,
+                  commanderData: selectedCard,
+                  playerUid: auth.currentUser.uid,
+                  playerName: auth.currentUser.displayName,
+                  gameType: "MTGCommander",
+                };
+                handleCreateDBGameCode(joinPayload);
+              }}>
+              Confirm
+            </button>
           </div>
         ) : null}
       </div>
