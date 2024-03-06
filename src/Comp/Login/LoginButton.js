@@ -27,10 +27,11 @@ export default function LoginButton() {
   });
 
   const handleLoginClick = () => {
+    signInWithRedirect(auth, provider);
     // signInWithPopup(auth, provider).then((results) => {
-    signInWithRedirect(auth, provider).then((results) => {
-      // This logic is now handled by the onAuthStateChanged listener
-    });
+    // signInWithRedirect(auth, provider).then((results) => {
+    // This logic is now handled by the onAuthStateChanged listener
+    // });
   };
 
   return (
