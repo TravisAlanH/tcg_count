@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MenuBar from "../../../Utilities/LifeMenuBar/MenuBar";
 import { useDispatch } from "react-redux";
 import * as GameStateActions from "../../../../../../Redux/Slices/GameState_Slices";
@@ -20,8 +20,16 @@ export default function LifeLayout() {
     for (let i = 0; i < playerCount; i++) {
       payload.id = i;
       dispatch(MTGCommanderActions.BuildPlayerData(payload));
+      if (playerCount !== "3" || playerCount !== "5") {
+        const playerArray = new Array(parseInt(playerCount)).fill(1);
+        dispatch(GameStateActions.BuildTableLayout(playerArray));
+      }
     }
   }
+
+  useEffect(() => {
+    dispatch(GameStateActions.BuildTableLayout([]));
+  });
 
   return (
     <div className="flex flex-col justify-start">

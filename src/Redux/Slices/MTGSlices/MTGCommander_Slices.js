@@ -14,7 +14,6 @@ function commanderDamageBuilder(playerCount) {
 const initialState = {
   playerCount: 0,
   playerData: [],
-  tableLayout: [],
 };
 
 const Slice = createSlice({
@@ -33,12 +32,9 @@ const Slice = createSlice({
         player_commander_damage: commanderDamageBuilder(action.payload.playerCount),
       });
     },
-    BuildTableLayout: (state, action) => {
-      state.tableLayout = action.payload;
-    },
   },
 });
 
-export const { BuildPlayerData, BuildTableLayout } = Slice.actions;
+export const { BuildPlayerData } = Slice.actions;
 
 export default Slice.reducer;
