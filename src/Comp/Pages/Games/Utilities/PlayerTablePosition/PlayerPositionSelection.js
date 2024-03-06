@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as gameActions from "../../../../../Redux/Slices/GameState_Slices";
 
@@ -20,6 +20,14 @@ export default function PlayerPositionSelection() {
     [0, 1, 1, 1, 1, 1],
     [1, 0, 1, 1, 1, 1],
   ];
+
+  useEffect(() => {
+    if (playerCount !== "3" && playerCount !== "5") {
+      console.log(playerCount);
+      const playerArray = new Array(parseInt(playerCount)).fill(1);
+      dispatch(gameActions.BuildTableLayout(playerArray));
+    }
+  });
 
   return (
     <div className="flex flex-col">

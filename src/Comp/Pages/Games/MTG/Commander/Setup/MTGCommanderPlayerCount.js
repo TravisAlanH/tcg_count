@@ -20,11 +20,11 @@ export default function LifeLayout() {
     for (let i = 0; i < playerCount; i++) {
       payload.id = i;
       dispatch(MTGCommanderActions.BuildPlayerData(payload));
-      if (playerCount !== "3" || playerCount !== "5") {
-        const playerArray = new Array(parseInt(playerCount)).fill(1);
-        dispatch(GameStateActions.BuildTableLayout(playerArray));
-      }
     }
+    // if (playerCount !== "3" || playerCount !== "5") {
+    //   const playerArray = new Array(parseInt(playerCount)).fill(1);
+    //   dispatch(GameStateActions.BuildTableLayout(playerArray));
+    // }
   }
 
   useEffect(() => {

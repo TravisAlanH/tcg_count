@@ -15,16 +15,28 @@ export default function MTGCommanderGameTable() {
         {tableLayout.length === 0 ? (
           <PlayerPositionSelection />
         ) : (
-          <div className="w-full h-screen">
-            <div className="grid grid-cols-2 w-full h-full">
-              {tableLayout.map((position, index) => {
-                return (
-                  <div key={index} className="border-2 p-4">
-                    {position === 0 ? "Empty" : "Player " + (index + 1)}
-                  </div>
-                );
-              })}
-            </div>
+          <div className="w-screen h-screen">
+            {tableLayout.length === 2 ? (
+              <div className={"grid grid-rows-2 w-full h-full"}>
+                {tableLayout.map((position, index) => {
+                  return (
+                    <div key={index} className="border-2 p-4">
+                      {position === 0 ? "Empty" : "Player " + (index + 1)}
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className={"grid grid-cols-2 w-full h-full"}>
+                {tableLayout.map((position, index) => {
+                  return (
+                    <div key={index} className="border-2 p-4">
+                      {position === 0 ? "Empty" : "Player " + (index + 1)}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         )}
       </div>

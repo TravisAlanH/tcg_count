@@ -32,9 +32,13 @@ const Slice = createSlice({
         player_commander_damage: commanderDamageBuilder(action.payload.playerCount),
       });
     },
+    ResetPlayerData: (state) => {
+      state.playerCount = 0;
+      state.playerData = [];
+    },
   },
 });
 
-export const { BuildPlayerData } = Slice.actions;
+export const { BuildPlayerData, ResetPlayerData } = Slice.actions;
 
 export default Slice.reducer;
