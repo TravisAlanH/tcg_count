@@ -1,4 +1,4 @@
-import { signInWithRedirect } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../Firebase";
 import { useDispatch } from "react-redux";
 import React from "react";
@@ -27,8 +27,11 @@ export default function LoginButton() {
   });
 
   const handleLoginClick = () => {
-    signInWithRedirect(auth, provider);
-    // signInWithPopup(auth, provider).then((results) => {
+    // signInWithRedirect(auth, provider);
+    // console.log(auth.currentUser);
+    signInWithPopup(auth, provider).then((results) => {
+      console.log(results);
+    });
     // signInWithRedirect(auth, provider).then((results) => {
     // This logic is now handled by the onAuthStateChanged listener
     // });
