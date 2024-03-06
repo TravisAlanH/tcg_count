@@ -1,5 +1,5 @@
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
-import app, { db } from "../Firebase";
+import { db } from "../Firebase";
 
 export const handleCreateDBGameCode = async (payload) => {
   console.log(payload);
@@ -12,9 +12,9 @@ export const handleCreateDBGameCode = async (payload) => {
   });
 };
 
-function isNotEmptyObject(obj) {
-  return Object.keys(obj).length > 0;
-}
+// function isNotEmptyObject(obj) {
+//   return Object.keys(obj).length > 0;
+// }
 
 export const handleGetDBPlayerByCode = async (code) => {
   const collectionRef = collection(db, "GameCodes");
