@@ -20,10 +20,12 @@ export const handleGetDBPlayerByCode = async (code) => {
   const collectionRef = collection(db, "GameCodes");
   const querySnapshot = await getDocs(collectionRef);
 
+  let player = {};
   querySnapshot.forEach((doc) => {
     if (doc.data().gameCode === code) {
-      // console.log(doc.id, "=>", doc.data());
-      return doc.data();
+      console.log(doc.id, "=>", doc.data());
+      player = doc.data();
     }
   });
+  return player;
 };

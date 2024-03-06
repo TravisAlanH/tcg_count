@@ -3,6 +3,7 @@ import React from "react";
 import MenuBar from "../../../Utilities/LifeMenuBar/MenuBar";
 import { useSelector } from "react-redux";
 import PlayerPositionSelection from "../../../Utilities/PlayerTablePosition/PlayerPositionSelection";
+import MTGCommanderPlayerBox from "./PlayerBox/MTGCommanderPlayerBox";
 // import * as GameActions from "../../../../../../Redux/Slices/GameState_Slices";
 
 export default function MTGCommanderGameTable() {
@@ -21,7 +22,7 @@ export default function MTGCommanderGameTable() {
                 {tableLayout.map((position, index) => {
                   return (
                     <div key={index} className="border-2 p-4">
-                      {position === 0 ? "Empty" : "Player " + (index + 1)}
+                      {position === 0 ? "" : <MTGCommanderPlayerBox position={position} />}
                     </div>
                   );
                 })}
@@ -31,7 +32,7 @@ export default function MTGCommanderGameTable() {
                 {tableLayout.map((position, index) => {
                   return (
                     <div key={index} className="border-2 p-4">
-                      {position === 0 ? "Empty" : "Player " + (index + 1)}
+                      {position === 0 ? "" : <MTGCommanderPlayerBox position={position} />}
                     </div>
                   );
                 })}

@@ -7,25 +7,30 @@ export default function PlayerPositionSelection() {
   const dispatch = useDispatch();
 
   const threePlayers = [
-    [1, 1, 0, 1],
-    [1, 1, 1, 0],
-    [0, 1, 1, 1],
-    [1, 0, 1, 1],
+    [1, 2, 0, 3],
+    [1, 2, 3, 0],
+    [0, 1, 2, 3],
+    [1, 0, 2, 3],
   ];
   const fivePlayers = [
-    [1, 1, 1, 1, 0, 1],
-    [1, 1, 1, 1, 1, 0],
-    [1, 1, 0, 1, 1, 1],
-    [1, 1, 1, 0, 1, 1],
-    [0, 1, 1, 1, 1, 1],
-    [1, 0, 1, 1, 1, 1],
+    [1, 2, 3, 4, 0, 5],
+    [1, 2, 3, 4, 5, 0],
+    [1, 2, 0, 3, 4, 5],
+    [1, 2, 3, 0, 4, 5],
+    [0, 1, 2, 3, 4, 5],
+    [1, 0, 2, 3, 4, 5],
   ];
 
   useEffect(() => {
     if (playerCount !== "3" && playerCount !== "5") {
       console.log(playerCount);
-      const playerArray = new Array(parseInt(playerCount)).fill(1);
-      dispatch(gameActions.BuildTableLayout(playerArray));
+      let newPlayerArray = [];
+      for (let i = 0; i < playerCount; i++) {
+        newPlayerArray.push(i + 1);
+      }
+
+      // const playerArray = new Array(parseInt(playerCount)).fill(1);
+      dispatch(gameActions.BuildTableLayout(newPlayerArray));
     }
   });
 

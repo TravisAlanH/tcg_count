@@ -23,11 +23,12 @@ const Slice = createSlice({
     BuildPlayerData: (state, action) => {
       state.playerCount = action.payload.playerCount;
       state.playerData.push({
-        player_id: action.payload.id,
-        player_name: action.payload.name,
+        player_id: 0,
+        player_name: "",
         player_life: 40,
         player_poison: 0,
-        player_commander: action.payload.commander,
+        player_commander: "",
+        player_commander_image: "",
         player_alive: true,
         player_commander_damage: commanderDamageBuilder(action.payload.playerCount),
       });
@@ -36,9 +37,22 @@ const Slice = createSlice({
       state.playerCount = 0;
       state.playerData = [];
     },
+    PlayerJoinsGame: (state, action) => {
+      console.log(action.payload);
+      state.playerData[action.payload.position - 1] = {
+        player_id: action.payload.player_id,
+        player_name: action.payload.player_name,
+        player_life: 40,
+        player_poison: 0,
+        player_commander: action.payload.player_commander,
+        player_commander_image: action.payload.player_commander_image,
+        player_alive: true,
+        player_commander_damage: commanderDamageBuilder(state.playerCount),
+      };
+    },
   },
 });
 
-export const { BuildPlayerData, ResetPlayerData } = Slice.actions;
+export const { BuildPlayerData, ResetPlayerData, PlayerJoinsGame } = Slice.actions;
 
 export default Slice.reducer;

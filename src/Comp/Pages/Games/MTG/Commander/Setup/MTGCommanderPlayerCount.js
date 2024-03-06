@@ -12,8 +12,6 @@ export default function LifeLayout() {
   let payload = {
     playerCount: playerCount,
     id: 0,
-    name: "test",
-    commander: "test",
   };
 
   function handlePlayerBuild() {
@@ -37,7 +35,14 @@ export default function LifeLayout() {
         <MenuBar />
       </div>
       <div className="flex flex-col items-start">
-        <input type="number" className="border-2" onChange={(e) => setPlayerCount(e.target.value)} />
+        <input
+          type="number"
+          className="border-2"
+          onChange={(e) => {
+            setPlayerCount(e.target.value);
+            dispatch(MTGCommanderActions.ResetPlayerData());
+          }}
+        />
         <button
           onClick={() => {
             dispatch(GameStateActions.turnMatchScreenOn());
