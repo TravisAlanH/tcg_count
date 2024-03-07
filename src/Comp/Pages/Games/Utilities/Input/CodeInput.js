@@ -4,10 +4,10 @@ import ShortUniqueId from "short-unique-id";
 const CodeInput = ({ codeInputs, setCodeInputs, position }) => {
   const [code, setCode] = React.useState("");
   const inputRefs = useRef([]);
-  const uid = new ShortUniqueId();
   // const code = uid.randomUUID(9).toLocaleUpperCase();
 
   useEffect(() => {
+    const uid = new ShortUniqueId();
     setCode(uid.randomUUID(9).toLocaleUpperCase());
     // Initialize refs
     inputRefs.current = Array.from(
