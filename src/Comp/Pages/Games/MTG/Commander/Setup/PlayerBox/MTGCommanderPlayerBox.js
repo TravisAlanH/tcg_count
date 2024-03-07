@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import MTGCommanderAddPlayerToTable from "../MTGCommanderAddPlayerToTable";
-import MTGCommanderHostJoinTable from "../../MTGCommanderGameCode/MTGCommanderHostJoinTable";
+import MTGCommanderHostJoinButton from "./MTCCommanderHostJoinButton";
+import MTGCommanderPlayerJoinButton from "./MTGCommanderPlayerJoinButton";
 
 export default function MTGCommanderPlayerBox(props) {
   const players = useSelector((state) => state.data.MTGCommander_Slices.playerData);
@@ -25,11 +25,11 @@ export default function MTGCommanderPlayerBox(props) {
     <div>
       {players.every((player) => player.player_id === 0) ? (
         <div>
-          <MTGCommanderHostJoinTable position={props.position} />
+          <MTGCommanderHostJoinButton position={props.position} />
         </div>
       ) : (
         <div>
-          <MTGCommanderAddPlayerToTable position={props.position} />
+          <MTGCommanderPlayerJoinButton position={props.position} />
         </div>
       )}
     </div>

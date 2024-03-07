@@ -11,7 +11,7 @@ export default function MTGCommanderGameCode() {
 
   const code = () => {
     const uid = new ShortUniqueId();
-    return uid.randomUUID(6);
+    return uid.randomUUID(6).toLocaleUpperCase();
   };
 
   const handleCardSearch = () => {
