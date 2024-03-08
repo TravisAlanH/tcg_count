@@ -5,6 +5,7 @@ import React from "react";
 import "./Login.css";
 import * as LoginActions from "./FirebaseLoginActions";
 import * as Login_Slices from "../../Redux/Slices/Login_Slices";
+import ButtonModal from "../Pages/Games/Utilities/Modal/ButtonModal";
 
 export default function LoginButton() {
   const [openLogin, setOpenLogin] = React.useState(false);
@@ -48,12 +49,14 @@ export default function LoginButton() {
           <div>
             {createAccount === false ? (
               <div>
+                {/* <ButtonModal Title="Login" Component={<LoginSet />} /> */}
                 <LoginSet />
-                <button onClick={() => setCreateAccount(true)}>Create Account</button>
+                {/* <button onClick={() => setCreateAccount(true)}>Create Account</button> */}
+                <ButtonModal Title="Create Account" Component={<CreateAccountSet />} />
               </div>
             ) : (
               <div>
-                <CreateAccountSet />
+                {/* <CreateAccountSet /> */}
                 <button onClick={() => setCreateAccount(false)}>Return to Login</button>
               </div>
             )}

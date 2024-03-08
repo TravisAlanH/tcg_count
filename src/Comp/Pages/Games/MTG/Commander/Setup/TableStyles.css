@@ -1,0 +1,7 @@
+.tableLayout {
+  margin: 0; /* Remove default body margin */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-auto-rows: 1fr;
+  height: 100vh; /* Full height */
+}

@@ -38,30 +38,32 @@ export default function MenuBar() {
           alt=""
         />
       </div>
-      <div
-        ref={menuRef}
-        className={"dropdown-menu border-2 border-red-800 px-4 py-2 " + (dropOpen ? "dropOpen" : "dropNotOpen")}>
+      <div ref={menuRef} className={"dropdown-menu px-4 py-2 " + (dropOpen ? "dropOpen" : "dropNotOpen")}>
         <p className="pb-5">Header</p>
-        <ul className="flex flex-col gap-3">
+        <ul className="flex flex-col gap-3 relative z-50">
           {/*  */}
-          <li className="dropDownItem">
+          <li className="dropDownItem absolute top-0 border-2">
             <img src={""} alt="" />
             <Link to="/">Home</Link>
           </li>
           {/*  */}
           {/*  */}
-          <li className="dropDownItem">
+          <li className="dropDownItem absolute top-[2.5rem] border-2">
             <img src={""} alt="" />
             <Link to="/account">My Profile</Link>
           </li>
           {/*  */}
           {/*  */}
-          <li className="dropDownItem">
+          <li className="dropDownItem absolute top-[5rem] border-2">
             <img src={""} alt="" />
             <Link to="/settings">Settings</Link>
           </li>
           {/*  */}
-          <LogoutButton />
+          <li className="dropDownItem absolute top-[7.5rem] border-2">
+            <img src={""} alt="" />
+
+            <LogoutButton />
+          </li>
         </ul>
       </div>
     </div>

@@ -9,7 +9,6 @@ export default function MTGCommanderHostJoinTable(props) {
   const [cardList, setCardList] = React.useState([]);
   const [searchedCard, setSearchedCard] = React.useState("");
   const [selectedCard, setSelectedCard] = React.useState(null);
-  console.log(props.position);
 
   const user = auth.currentUser;
 

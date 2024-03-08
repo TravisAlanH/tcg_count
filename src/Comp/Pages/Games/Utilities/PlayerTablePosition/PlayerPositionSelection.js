@@ -42,6 +42,7 @@ export default function PlayerPositionSelection() {
             ? threePlayers.map((player, index) => {
                 return (
                   <div
+                    key={index}
                     className="border-2 p-4 rounded-lg"
                     onClick={() => dispatch(gameActions.BuildTableLayout(player))}>
                     <div className="w-[5rem] grid grid-cols-2 h-[12rem] justify-center items-center gap-2" key={index}>
@@ -57,6 +58,7 @@ export default function PlayerPositionSelection() {
             : fivePlayers.map((player, index) => {
                 return (
                   <div
+                    key={index}
                     className="border-2 p-4 rounded-lg"
                     onClick={() => dispatch(gameActions.BuildTableLayout(player))}>
                     <div className="w-[5rem] grid grid-cols-2 h-[12rem] justify-center items-center gap-2" key={index}>
